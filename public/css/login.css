@@ -1,0 +1,262 @@
+*{
+  /* font-family: 'Roboto',sans-serif; */
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box ;
+}
+:root{
+  /* --main-color:#ff695f; */
+  /* --main-color:#6b5ae7; */
+  --main-color:var(--bs-dark);
+  /* --main-color:var(--bs-info); */
+  --main-color-lenner : linear-gradient(to right top, #ff695f, #d95681, #9f5490, #625285, #344767);
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,500&display=swap'); */
+.book-title{
+  font-size: 44px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 80px;
+  letter-spacing: .09em;
+  /* font-family: 'Roboto Mono', monospace; */
+}
+.all-content-event{
+  z-index: 0;
+  height: 100vh;
+  overflow: auto;
+}
+.boox-logo{
+  position: relative;
+  right: -340px;
+  margin-right: 20px;
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  /* border-radius: 50%; */
+  overflow: hidden;
+    opacity: 1;
+    /* z-index: 70; */
+    transition: 1.1s ease;
+}
+.boox-logo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  object-fit: cover;
+  /* z-index: 70; */
+
+}
+.bg-blue-l{
+  position: relative;
+  /* background-color: #6b5ae7; */
+}
+.remove-event{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  position: absolute !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #eb4f3e; */
+  min-height: 85vh;
+  z-index: 1;
+  height: 50%;
+}
+
+
+.card-login{
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  top: 10%;
+  left: 25%;
+  background-color: #fff;
+  transform: scale(.9) ;
+  transition: 1s;
+}
+.card-login .imgBox{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  
+  background-color: transparent;
+
+  transition: 1s;
+  transform: skew(-7deg);
+
+  box-shadow: 0px 30px 4px .3  rgba(0,0,0,0.45);
+}
+.card-login .imgBox::before{
+  position: absolute;
+  content: "";
+  top: -15px;
+  right: -15px;
+  transform-origin: right;
+  border: 3px solid var( --main-color);
+  width: 15px;
+  height: 100%;
+  background-color:#fff;
+  transform: skewY(-45deg);
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+}
+.card-login .imgBox::after{
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0px;
+  width: 100%;
+  height: 15px;
+  transform-origin: bottom;
+  transform: skewX(-45deg);
+  border: 2px solid var( --main-color);
+  background-color: #fff;
+  border-right:0px ;
+  border-left: 5px solid var( --main-color);
+  border-bottom: 0px;
+}
+.cover-book{
+  /* background-color: var( --main-color); */
+  background-image: var(--main-color-lenner);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* transform: skew(-7deg); */
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+
+
+}
+.cover-book .cover-image{
+  opacity: 0;
+  transition: .301s;
+}
+
+
+
+.card-login .imgBox img{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: unset;
+  transform-style: preserve-3d;
+}
+.card-login .details{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  /* transform: skew(-7deg); */
+  transition: 1s ease;
+  opacity: 0;
+}
+
+.card-login .details .content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+  /* transform: skew(-7deg); */
+
+}
+.details .content form{
+width: 100%;
+
+}
+.details .content form .form-group{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+.card-login .details .content h2{
+  text-align: center; 
+  font-weight: 700;
+  line-height: 1em;
+}
+.content h2{
+  color:var( --main-color);
+}
+.text-wight {
+  color: #fff !important;
+}
+
+
+
+.card-login:hover{
+  transform: translateX(50% ) scale(1.1);
+} 
+
+ .card-login:hover .imgBox{
+  box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  background-color: #222;
+  border: 0px;
+  transform: skew(0deg);
+
+} 
+.card-login:hover .cover-book{
+  /* display: none; */
+  transform: rotateY(-180deg);
+  border: 3px solid var( --main-color);
+
+}
+.book-body{
+  opacity: 1;
+  transition: 1s;
+}
+.card-login:hover .book-body ,.card-login:hover .boox-logo{
+  opacity: 0;
+
+}
+
+.card-login:hover .details{
+  opacity: 1;
+  z-index: 11;
+} 
+/* hover class for js   */
+.details-hover{
+  opacity: 1 !important;
+  z-index: 11;
+}
+.book-body-hover{
+  opacity: 0;
+
+}
+.cover-book-hover{
+  transform: rotateY(-180deg);
+  border: 3px solid var( --main-color);
+}
+.imgBox-hover{
+  box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 0px 9px -4px rgba(0,0,0,0.75);
+  background-color: #222;
+  border: 0px;
+  transform: skew(0deg) !important;
+}
+.card-login-hover{
+  transform: translateX(50% ) scale(1.1);
+
+}
