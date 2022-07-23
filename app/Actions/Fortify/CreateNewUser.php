@@ -64,7 +64,7 @@ class CreateNewUser implements CreatesNewUsers
                     'password' => Hash::make($input['password']),
                     'teacher' => $input['student'] ,
                     'img' =>$pathImg,
-                    "is_admin" =>1,
+                   
 
                 ]);
                $user = User::where(["name" =>$input['name'],'email' => $input['email'],])->first() ;
