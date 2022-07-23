@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 use App\Models\User;
-use App\Models\Question;
+use App\Models\Cours;
 use App\Models\Teacher;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -36,10 +37,19 @@ class AdminController extends Controller
 
           if( $mainTest == null)
           {
-            $test = new Test;
-            $test->main_test = 1;
-            $test->cours_content_id = 0;
-            $test->save(); 
+            $cours = new Cours ; 
+            
+            $cours->teacher_id = auth()->id() ; 
+            $cours->level = 5 ; 
+            $cours->hit_type = "main-test" ; 
+            $cours->description = "main-test" ; 
+            $cours->coursContent->description = "main-test" ;
+            $cours->coursContent->test->main_test = 1;
+            // $test = new Test;
+            // $test->main_test = 1;
+            // $test->cours_content_id = 0;
+            // $test->save(); 
+            $cours->save(); 
             $mainTestId =  Test::where("main_test","=",1)->first()->id;
           }
           else{
