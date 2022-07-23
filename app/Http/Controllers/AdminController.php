@@ -50,8 +50,8 @@ class AdminController extends Controller
                 $cours->description = "main-test" ; 
                 $cours->coursContent->description = "main-test" ;
                 $cours->save(); 
-
-                $coursid = $cours->coursContent->id ; 
+               $coursid = Cours::where("teacher_id",auth()->id())->first(["id"]) ; 
+               
             }else{
               $coursid   =  $coursid->id ; 
 
