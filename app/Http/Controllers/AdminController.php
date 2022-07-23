@@ -38,7 +38,7 @@ class AdminController extends Controller
           {
             $test = new Test;
             $test->main_test = 1;
-            $test->cours_content_id = null;
+            $test->cours_content_id = 0;
             $test->save(); 
             $mainTestId =  Test::where("main_test","=",1)->first()->id;
           }
