@@ -56,7 +56,7 @@ class AdminController extends Controller
               $coursid   =  $coursid->id ; 
 
             }
-            $coursContentid =CoursContent::where("cours_id",$coursid)->first(['id'])->id ;  
+            $coursContentid =CoursContent::first(['id'])->id ;  
            
             $test = new Test;
             $test->main_test = 1;
