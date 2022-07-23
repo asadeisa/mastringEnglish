@@ -21,15 +21,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">my progress</a>
               </li>
-             
-{{--           
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li> --}}
             </ul>
             <div class="following-teacher d-flex gap-3 ">
               <h6 class="py-0 my-0"><span class="lin-hieght-4"> follower</span></h6>
-             @if ($TeacherImage != null)
+             @if (isset($TeacherImage) && $TeacherImage != null)
                  
              @forelse ($TeacherImage as $img)
              <a href="{{ route('teacher-path',$img['id']) }}">

@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer("level")->default(1);
+            $table->integer("level")->nullable();
             $table->string("lang")->default("en");
             $table->boolean("teacher")->default(false);
             $table->boolean("is_admin")->default(false);

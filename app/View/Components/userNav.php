@@ -14,11 +14,11 @@ class userNav extends Component
      *
      * @return void
      */
-    public $TeacherImage = null;
+    public $TeacherImage ;
     public function __construct()
     {
         //
-        
+        $this->TeacherImage = null ; 
     }
 
     /**
@@ -34,8 +34,13 @@ class userNav extends Component
             $followTeacher  = Teacher::wherehas("follower",function($q){
                 $q->where("user_id","=",auth()->user()->id);
             })->get(['user_id'])->toArray();
+            if($followTeacher != null)
+            {
 
-            return User::whereIn("id",$followTeacher)->get(['id',"img"])->toArray();
+                return User::whereIn("id",$followTeacher)->get(['id',"img"])->toArray();
+            }else{
+                return null ; 
+            }
            });
 
         return view('components.user-nav');
