@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\Cours;
+use App\Models\CoursContent;
 use App\Models\Teacher;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -37,19 +38,30 @@ class AdminController extends Controller
 
           if( $mainTest == null)
           {
-            $cours = new Cours ; 
-            
-            $cours->teacher_id = auth()->id() ; 
-            $cours->level = 5 ; 
-            $cours->hit_type = "main-test" ; 
-            $cours->description = "main-test" ; 
-            $cours->coursContent->description = "main-test" ;
-            $cours->coursContent->test->main_test = 1;
-            // $test = new Test;
-            // $test->main_test = 1;
-            // $test->cours_content_id = 0;
-            // $test->save(); 
-            $cours->save(); 
+            $coursid = Cours::where("teacher_id",auth()->id())->first(["id"]) ; 
+            if($coursid == null )
+            {
+
+                $cours = new Cours ; 
+                
+                $cours->teacher_id = auth()->id() ; 
+                $cours->level = 5 ; 
+                $cours->hit_type = "main-test" ; 
+                $cours->description = "main-test" ; 
+                $cours->coursContent->description = "main-test" ;
+                $cours->save(); 
+
+                $coursid = $cours->coursContent->id ; 
+            }else{
+              $coursid   =  $coursid->id ; 
+
+            }
+            $coursContentid =CoursContent::where("cours_id",$coursid)->first(['id'])->id ;  
+           
+            $test = new Test;
+            $test->main_test = 1;
+            $test->cours_content_id = $coursContentid;
+            $test->save(); 
             $mainTestId =  Test::where("main_test","=",1)->first()->id;
           }
           else{
