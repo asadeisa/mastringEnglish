@@ -29,16 +29,18 @@
             </ul>
             <div class="following-teacher d-flex gap-3 ">
               <h6 class="py-0 my-0"><span class="lin-hieght-4"> follower</span></h6>
-           
-              @forelse ($TeacherImage as $img)
-              <a href="{{ route('teacher-path',$img['id']) }}">
-                <div class="teacher-follower">
-                  <img width="80" height="80" src="{{ asset($img["img"]) }}" >
-                </div>
-              </a>
-              @empty
-                  
-              @endforelse
+             @if ($TeacherImage != null)
+                 
+             @forelse ($TeacherImage as $img)
+             <a href="{{ route('teacher-path',$img['id']) }}">
+               <div class="teacher-follower">
+                 <img width="80" height="80" src="{{ asset($img["img"]) }}" >
+               </div>
+             </a>
+             @empty
+                 
+             @endforelse
+             @endif
             </div>
           </div>
         </div>

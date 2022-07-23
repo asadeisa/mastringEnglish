@@ -14,7 +14,7 @@ class userNav extends Component
      *
      * @return void
      */
-    public $TeacherImage;
+    public $TeacherImage = null;
     public function __construct()
     {
         //
