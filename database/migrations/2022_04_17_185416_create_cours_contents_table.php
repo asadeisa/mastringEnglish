@@ -19,11 +19,11 @@ class CreateCoursContentsTable extends Migration
             ->constrained("cours")
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string("grammar_type")->default(null);
-            $table->string("voc_type")->default(null);
-            $table->string("img")->default(null);
-            $table->string("video")->default(null);
-            $table->string("text")->default(null);
+            $table->string("grammar_type")->nullable();
+            $table->string("voc_type")->nullable();
+            $table->string("img")->nullable();
+            $table->string("video")->nullable();
+            $table->string("text")->nullable();
             $table->string("description");
 
             $table->timestamps();

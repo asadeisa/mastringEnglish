@@ -18,7 +18,7 @@ class CreateTestsTable extends Migration
             $table->foreignId('cours_content_id')
             ->constrained("cours_contents")
             ->onUpdate('cascade')
-            ->onDelete('cascade')->default(null);
+            ->onDelete('cascade')->nullable();
             $table->boolean("main_test")->default(false);
             $table->timestamps();
         });

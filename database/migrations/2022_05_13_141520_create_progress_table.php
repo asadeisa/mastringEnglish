@@ -22,7 +22,7 @@ class CreateProgressTable extends Migration
             $table->foreignId('cours_content_id')
             ->constrained("cours_contents")
             ->onUpdate('cascade')
-            ->onDelete('cascade')->default(null);
+            ->onDelete('cascade')->nullable();
             $table->string("complet");
             $table->timestamps();
         });
