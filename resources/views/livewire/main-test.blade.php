@@ -20,7 +20,7 @@
   </div>
   <div class="content d-flex mb-3">
     <div class=" d-flex card-test w-100">
-      @if(count($allQustion->questions) != 0 )
+      @if(isset($allQustion) && count($allQustion->questions) != 0 )
      
       @forelse ($allQustion->questions as $questions )
       <div class="card max-width-44" >
