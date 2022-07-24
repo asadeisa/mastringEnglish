@@ -100,11 +100,13 @@ class AdminController extends Controller
           $jsonFile =   file_get_contents(asset("json/allWords-list from acdamic web.json"));
           $totWords = json_decode($jsonFile, true);
         $sentasWord =  explode(" ",$totelQuestionWord);
-        foreach($sentasWord as $oneWord)
+        
+        foreach($totWords as $jsonword)
         {
-            foreach($totWords as $jsonword)
+            foreach($sentasWord as $oneWord)
             {
-                
+              
+    
                 if($jsonword["word"]=== $oneWord )
                 {
                     $difficulty += $jsonword["difficulty"]; 
@@ -112,8 +114,9 @@ class AdminController extends Controller
                     break;
                 }
             }
-
+            
         }
+     
            
         if($difficulty == 0)
         {
