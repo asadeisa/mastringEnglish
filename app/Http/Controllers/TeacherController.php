@@ -195,64 +195,27 @@ class TeacherController extends Controller
             $question->option3 = $request->option3;
             $question->option4 = $request->option4;
             $question->true_ans = $request->right_answer;
-            $totelQuestionWord = $request->question . $request->right_answer; 
+            
         }
         elseif($request->type_test == "translatsent")
         {
             $question->question = $request->sentences;
             $question->translat_sent = true;
             $question->true_ans = $request->translation;
-            $totelQuestionWord = $request->sentences ; 
-
         }
         elseif($request->type_test == "sortabll")
         {
             $question->question = $request->order;
             $question->sortabll = true;
-            $totelQuestionWord = $request->order ; 
-
-
         }
         $difficulty = 0;
         $freq = 0;
-        $jsonFile =   file_get_contents("json/allWords-list from acdamic web.json");
-        $totWords = json_decode($jsonFile, true);
-      $sentasWord =  explode(" ",$totelQuestionWord);
-      foreach($sentasWord as $oneWord)
-      {
-          foreach($totWords as $jsonword)
-          {
-              
-              if($jsonword["word"]=== $oneWord )
-              {
-                  $difficulty += $jsonword["difficulty"]; 
-                  $freq +=   $jsonword["freq"] ;
-                  break;
-              }
-          }
-
-      }
-      if($difficulty == 0)
-      {
-          $difficulty  =  count($sentasWord)/2;
-      }
-      if($freq == 0)
-      {
-          $freq  =  count($sentasWord)/3;
-      }
-
-      $difficulty  = round($difficulty/count($sentasWord),2)  ;
-      $freq  = round( $freq/count($sentasWord),2) ;
-      
       $question->freq = $freq;
       $question->difficulty = $difficulty;
         $question->save();
         return redirect()->back()->with("success","تم اضافة السؤل  ");
-        
-
-
-
     }
+
     public function EditContent(Request $request)
     {
        
