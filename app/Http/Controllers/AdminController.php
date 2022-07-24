@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\Cours;
-use App\Models\CoursContent;
 use App\Models\Teacher;
 use App\Models\Question;
+use App\Models\CoursContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use App\Http\Controllers\AllWordsList;
 
 class AdminController extends Controller
 {
@@ -97,10 +99,14 @@ class AdminController extends Controller
           }
           $difficulty = 0;
           $freq = 0;
-          $jsonFile =   file_get_contents(asset("json/allWords-list from acdamic web.json"));
+          
+        //   $jsonFile =   asset("json/allWords-list.json");
+          $jsonFile = AllWordsList::wordDiffData();
+        //   $jsonFile = json_decode($jsonFile, true);
           $totWords = json_decode($jsonFile, true);
+      
         $sentasWord =  explode(" ",$totelQuestionWord);
-        
+
         foreach($totWords as $jsonword)
         {
             foreach($sentasWord as $oneWord)
