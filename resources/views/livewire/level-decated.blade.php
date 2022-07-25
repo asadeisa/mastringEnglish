@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div x-cloak x-show="section2" wire:key="{{ rand() }}" class="all-test-content w-75">
+      <div x-cloak x-show="section2" class="all-test-content w-75">
 
         <div class="card prespactive-rotae" x-cloak x-data="{
               studentAnswer1 :@entangle('studentAnswers'),
