@@ -1,4 +1,4 @@
-<div wire:key="{{ rand() }}">
+<div >
   <div x-data="{
       section2 : @entangle('nextGroupeQuestion').defer,
       section1 : !this.section2,
