@@ -34,13 +34,8 @@ Route::prefix("home")
     
         Route::get('analyze',[UserTolles::class,'analyze'])->name('analyze');
 
-        // Route::get('community',[UserTolles::class,"communityPage" ])
-        // ->name('community') ; 
-
-        Route::group(['prefix' => 'community'], function(){
-            \Illuminate\Support\Facades\Artisan::call('websockets:serve');
-            Route::get('/',[UserTolles::class,"communityPage" ])->name('community');
-        });
+        Route::get('community',[UserTolles::class,"communityPage" ])
+        ->name('community') ; 
         Route::get("u-profile",[UserTolles::class,"profilePge"])->name("u-profile");
        Route::get('practice',[UserTolles::class,"practicePage"])->name("practice");
        Route::get('practice/text-question',[UserTolles::class,"LocalQuestion"])->name("local-question");
