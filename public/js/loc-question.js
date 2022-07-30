@@ -1,4 +1,4 @@
-
+const hostName = window.location.hostname; 
 
 let pageOFContext  = 0;
 let userUIData = null ; 
@@ -10,7 +10,7 @@ if(localStorage.getItem("pageOFContext") != null)
 }
 
 const studentLevel = document.querySelector(".user-level-number").id; 
-const  WordsMeaning  = fetch("../../json/questionAndAns.json") ;
+const  WordsMeaning  = fetch(`${hostName}/public/json/questionAndAns.json`) ;
 async function getdata(){
   await WordsMeaning  
   .then(response => response.json())

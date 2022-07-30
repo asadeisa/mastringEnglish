@@ -21,7 +21,7 @@ Route::get('/',function(){
 Route::prefix("home")
     ->middleware(["auth"])
     ->group(function(){
-
+       
         Route::get("/",[UserController::class,"index"])->name("home");
         Route::get("cours/content/{id}",[UserController::class,"showCours"])
         ->name("cours/content/");

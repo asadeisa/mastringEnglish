@@ -1,15 +1,4 @@
-// let text  = nlp('we get it, you vape.'); 
-// .sentences().toFutureTense():
-// .sentences().toNegative():
-// .sentences().toPresentTense():
-// .sentences().toPositive():
-// console.log(text.sentences().toPastTense().text());
-
-
-
-
-// start coding the page of word-meaning : 
-
+const hostName = window.location.hostname; 
 // const studentLevel = 1 ; 
 let pageOFContext  = 0;
 let filterdDataRezalt   = null ; 
@@ -20,7 +9,7 @@ if(localStorage.getItem("pageOFContext") != null)
   pageOFContext  =localStorage.getItem("pageOFContext") ; // this index indecate where user arraive in solving question  ;
 }
 
-const  WordsMeaning  = fetch("../../json/word-meaning.json") ;
+const  WordsMeaning  = fetch(`${hostName}/public/json/word-meaning.json`) ;
 async function getdata(){
   await WordsMeaning  
   .then(response => response.json())
