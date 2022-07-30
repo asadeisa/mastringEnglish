@@ -10,7 +10,7 @@ if(localStorage.getItem("pageOFContext") != null)
 }
 
 const studentLevel = document.querySelector(".user-level-number").id; 
-const  WordsMeaning  = fetch(`http://martring-english.herokuapp.com/public/json/questionAndAns.json`) ;
+const  WordsMeaning  = fetch(`http://martring-english.herokuapp.com/json/questionAndAns.json`) ;
 async function getdata(){
   await WordsMeaning  
   .then(response => response.json())
