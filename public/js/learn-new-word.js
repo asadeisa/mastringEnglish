@@ -9,7 +9,7 @@ if(localStorage.getItem("pageOFContext") != null)
   pageOFContext  =localStorage.getItem("pageOFContext") ; // this index indecate where user arraive in solving question  ;
 }
 
-const  WordsMeaning  = fetch(`${hostName}/public/json/word-meaning.json`) ;
+const  WordsMeaning  = fetch(`/public/json/word-meaning.json`) ;
 async function getdata(){
   await WordsMeaning  
   .then(response => response.json())
