@@ -87,7 +87,7 @@
          <div class="flex-1 d-flex align-items-center w-75 mb-5">
           <article class="p-3 mx-5 font-18">
             in EduSmart you will tutors whom will walk you through step by step during your learning process
-            we made a speachal AI algorithm to provide you a fit exercise with your level   
+           ,in addition we have  special AI algorithms to provide you with exercise that fit your level .   
           </article>
          </div>
       </section>
@@ -135,7 +135,7 @@
           </div>
 
           <article class="p-3 mx-5 ">
-            we have a variety of courses that are designed for all the levels so you can start with beginner course and end up with an expert course
+            EduSmart has AI techniques that are designed for all students , you can practice with reading paragraphs and answering questions that fit your level
           </article>
         </div>
       </section>
