@@ -11,11 +11,11 @@
   <div class="main-banner" id="top">
     <div class="container d-flex  justify-content-space-between ">
       <section class="flex-1 w-50 mt-5 ">
-        <h2 class="mt-5">
+        <h1 class="mt-5">
           learn English with  ultimate  options 
 
-        </h2>
-         <article class="my-4">Welcome to our platform , in EduSmart you will find a variety of options to learn English in a professional and enjoyable way</article>
+        </h1>
+         <article class="my-5 font-16">Welcome to our platform , in EduSmart you will find a variety of options to learn English in a professional and enjoyable way</article>
       </section>
       <section class="playing-icon flex-1">
         <div class="icon-holder">
@@ -79,12 +79,15 @@
   <div id="services" class="our-services section">
  
     <div class="container">
-      <section class="services d-flex justify-content-space-between ">
+      <section class="services d-flex justify-content-space-between  ">
 
+       <div class="w-50 mb-5 ">
         <img width="300" height="300" src="{{ asset("images/about-left-image.png") }}" >
-         <div class="flex-1 d-flex align-items-center">
-          <article class="p-3 mx-5">
+       </div>
+         <div class="flex-1 d-flex align-items-center w-75 mb-5">
+          <article class="p-3 mx-5 font-18">
             in EduSmart you will tutors whom will walk you through step by step during your learning process
+            we made a speachal AI algorithm to provide you a fit exercise with your level   
           </article>
          </div>
       </section>
@@ -139,12 +142,6 @@
     </div>
   </div>
 
-  <div id="about" class="about-us section mt-5">
-    <div class="container ">
-      
-
-    </div>
-  </div>
 
   <div class="footer-dec">
     <img src="{{ asset("images/footer-dec.png") }}" alt="">
