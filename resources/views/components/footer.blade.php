@@ -31,7 +31,7 @@
               <div class="community footer-item">
                 <h4>Community</h4>
                 <ul>
-                  <li><a href="#">E lrearning </a></li>
+                  <li><a href="#">Edu Smart </a></li>
                   <li><a href="#">All pepoel around word</a></li>
                   <li><a href="#">teacher form defernt cultuer</a></li>
                 </ul>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-lg-12">
               <div class="copyright">
-                <p>Copyright © 2021 Smart Leran
+                <p>Copyright © 2022 Edu Smart
                 <br>
                 Designed by <a rel="nofollow" href="#" title="free CSS templates">asad eisa</a>
               </p>
@@ -58,6 +58,7 @@
     
           </div>
         </div>
+        
       </footer>
     
     

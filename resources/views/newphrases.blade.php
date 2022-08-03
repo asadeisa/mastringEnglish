@@ -36,6 +36,5 @@
   </section>
 </div>
 
-<script  src="{{ asset("js/replaceword-meaning.js") }}"></script>
 <script defer src="{{ asset("js/rita.js") }}"></script>
 <script defer src="{{ asset("js/learn-new-word.js") }}"></script>

@@ -19,7 +19,7 @@
             <img width="100 " height="100" src="{{ asset("images/logo/log.jpg") }}" >
           </div>
           <div class="book-body">
-            <h2 class="text-center book-title"> Smart lrearn</h2>
+            <h2 class="text-center book-title">    Education Smart</h2>
             <div class="mx-5">
     
               <small class="text-wight" >start learn with as ,Enjoy with Free courses and comunicat with native spacker around the word</small>

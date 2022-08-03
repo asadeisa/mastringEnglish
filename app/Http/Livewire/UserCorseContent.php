@@ -89,11 +89,11 @@ class UserCorseContent extends Component
 
        session(['contentid' =>$this->contentid ]);
        
-       $this->coursContent= Cache::remember('coursContent', 400, function () {
+       $this->coursContent= Cache::remember('coursContent', 5, function () {
          return  Cours::where("id","=",$this->contentid)
                    ->with(["coursContent",
                           "coursContent.test.questions:id,test_id,question,true_ans,option1,option2,option3,option4,sortabll,translat_sent","coursContent.progress",
-                          "teacher:id,user_id,rank",
+                          "teacher:id,user_id,rank,glimpse",
                           "teacher.user:id,name,email,img"
                           ])
                           ->first()

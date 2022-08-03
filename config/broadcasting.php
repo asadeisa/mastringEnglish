@@ -38,9 +38,9 @@ return [
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'useTLS' => false,
-                'host' => env("APP_URL"),
+                'host' => '127.0.0.1',
                 'port' => 6001 , 
-                'scheme' => env("PUSHER_SCHENE")
+                'scheme' => 'http'
 
             ],
         ],

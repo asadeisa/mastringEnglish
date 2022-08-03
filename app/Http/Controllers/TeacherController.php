@@ -319,4 +319,16 @@ class TeacherController extends Controller
         // dd($userInfo);
         return view("teacher.student-info",compact("userInfo")) ; 
     }
+    public function delete_content(Request $req)
+    {
+        CoursContent::where("id",$req->content_id)->delete();
+        return redirect()->back();
+    }
+    public function set_glimpse(Request $req)
+    {
+      Teacher::where("user_id",$req->user_id)->update([
+            "glimpse"=> $req->glimpse 
+      ]);
+        return redirect()->back();
+    }
 }

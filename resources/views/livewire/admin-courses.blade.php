@@ -153,10 +153,7 @@
                         </div>
                         <div class="text-cours grid-start">
                             <article class="px-4 py-1">
-                                {{ $Content->text }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                                necessitatibus quaerat minus beatae. Possimus commodi, voluptate qui molestias eum
-                                explicabo iure ducimus quas excepturi dignissimos vitae amet tenetur, temporibus
-                                expedita?
+                                {{ $Content->text }} 
                             </article>
                         </div>
 

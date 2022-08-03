@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
-    <title>Smart Learn</title>
+    <title> Edu Smart</title>
 
     <link id="pagestyle" href="{{ asset("admin/css/soft-ui-dashboard.min2c70.css?v=1.0.3") }}" rel="stylesheet" />
     <!-- Anti-flicker snippet (recommended)  -->

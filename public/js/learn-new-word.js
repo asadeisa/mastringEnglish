@@ -9,9 +9,8 @@ if(localStorage.getItem("pageOFContext") != null)
   pageOFContext  =localStorage.getItem("pageOFContext") ; // this index indecate where user arraive in solving question  ;
 }
 
-// const  WordsMeaning  = fetch(`http://martring-english.herokuapp.com/json/word-meaning.json`) ;
+const  WordsMeaning  = fetch(`../../json/word-meaning.json`) ;
 
-const  WordsMeaning  = alljsonFile();
 
 async function getdata(){
   await WordsMeaning  

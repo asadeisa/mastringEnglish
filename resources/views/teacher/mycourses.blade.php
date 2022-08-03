@@ -49,7 +49,7 @@
             <h6>{{ $oncours->hit_type }}</h6>
           </div>
           <div class="d-flex">
-            <p class="w-50">countent:</p>
+            <p class="w-50">content:</p>
             @if( count($oncours->coursContent) == null)
             <h6>empty </h6>
             <div class="p-abslote">

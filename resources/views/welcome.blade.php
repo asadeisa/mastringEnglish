@@ -15,7 +15,7 @@
           learn English with  ultimate  options 
 
         </h2>
-         <article class="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptas officiis quibusdam excepturi, voluptatem ratione, eveniet ad doloribus velit vero dicta quae, voluptatibus neque doloremque cupiditate iure blanditiis dolores et?</article>
+         <article class="my-4">Welcome to our platform , in EduSmart you will find a variety of options to learn English in a professional and enjoyable way</article>
       </section>
       <section class="playing-icon flex-1">
         <div class="icon-holder">
@@ -84,7 +84,7 @@
         <img width="300" height="300" src="{{ asset("images/about-left-image.png") }}" >
          <div class="flex-1 d-flex align-items-center">
           <article class="p-3 mx-5">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. In expedita doloribus ea culpa eligendi illum, ducimus et tempora blanditiis totam veritatis officia repellat sint beatae? Nisi dolores similique neque cupiditate!
+            in EduSmart you will tutors whom will walk you through step by step during your learning process
           </article>
          </div>
       </section>
@@ -97,7 +97,7 @@
           </div>
 
           <article class="p-3 mx-5 ">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium velit aliquam dolores ut. Ut totam eaque quas voluptas, vitae, illo accusantium adipisci facere est repudiandae aliquam cumque, obcaecati aspernatur!
+            EduSmart provides chat rooms that are made from profound techniques so  tutors and students can communicate with each other very smoothly
           </article>
         </div>
         <div class="ask box-shadow-orang py-2">
@@ -108,18 +108,18 @@
           </div>
 
           <article class="p-3 mx-5 ">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium velit aliquam dolores ut. Ut totam eaque quas voluptas, vitae, illo accusantium adipisci facere est repudiandae aliquam cumque, obcaecati aspernatur!
+            you can also join our community where students like you can communicate and learn from each other
           </article>
         </div>
         <div class="analyze box-shadow-orang py-2">
           <div class="icon mb-3 text-center">
             <span class="font-25 text-pink">
-              <i class="fa-solid fa-atom"></i></span>
+              <i class="fas fa-chalkboard-teacher"></i></span>
             </span>
           </div>
 
           <article class="p-3 mx-5 ">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium velit aliquam dolores ut. Ut totam eaque q
+            we have a variety of courses that are designed for all the levels so you can start with beginner course and end up with an expert course
           </article>
         </div>
         <div class="practice box-shadow-orang py-2">
@@ -132,7 +132,7 @@
           </div>
 
           <article class="p-3 mx-5 ">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium velit aliquam dolores ut. Ut totam eaque q
+            we have a variety of courses that are designed for all the levels so you can start with beginner course and end up with an expert course
           </article>
         </div>
       </section>
@@ -149,6 +149,7 @@
   <div class="footer-dec">
     <img src="{{ asset("images/footer-dec.png") }}" alt="">
   </div>
+  
   <x-footer/>
 @endsection
 

@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
     public function showUser()
     {
-        $alluser = User::where("teacher",0)->where("is_admin",0)->get(["name","email","level","img","created_at"]) ; 
+        $alluser = User::where("teacher",0)->where("is_admin",0)->get(["id","name","email","level","img","created_at"]) ; 
         return view("admin.users",compact("alluser"));
     }
     public function mainTest()
@@ -172,7 +172,7 @@ class AdminController extends Controller
     }
     public function deleteStudent(Request $request)
     {
-        // dd($request->teacher_id);
+        // dd($request->user_id);
         User::where("id",$request->user_id)->delete();
         return redirect()->back() ; 
     }

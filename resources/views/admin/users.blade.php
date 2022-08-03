@@ -40,7 +40,7 @@ use Carbon\Carbon;
               </thead>
               <tbody>
                 @forelse ($alluser as $user)
-                    
+                    {{-- {{ dd($user) }} --}}
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">

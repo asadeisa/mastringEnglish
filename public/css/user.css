@@ -1572,7 +1572,7 @@ max-height: 450px;
     border-radius: 50%;
     border: 20px dodgerblue dotted;
     height: 150px;
-    animation: rotate-loder  5s;
+    animation: rotate-loder  6s;
     animation-fill-mode: both;
     /* animation-delay: 2s; */
     animation-timing-function: ease-in-out;

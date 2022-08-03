@@ -65,12 +65,22 @@ Route::prefix("teacher")
     Route::post("my-courses",[TeacherController::class,"newContent"])->name("create-content");
     Route::post("edit-content",[TeacherController::class,"EditContent"])
     ->name("edit-content");
+
+    Route::post("delete-content",[TeacherController::class,"delete_content"])
+    ->name("delete-content");
+
     Route::get("my-courses/cours-content/{id}",[TeacherController::class,"showContent"])
     ->name("cours-content");
+
+
+
+
     Route::post("create-question",[TeacherController::class,"CreateQuestion"])->name("create-question");
     Route::post("delete-question",[QuestionController::class,"distroy"])->name("delete-question");
     Route::get("profile",[TeacherController::class,"profile"])->name("teacher.profile");
     Route::get("students/{email}",[TeacherController::class,"showMyStudent"])->name("go-to-student");
+
+    Route::post("set-glimpse",[TeacherController::class,"set_glimpse"])->name("set-glimpse");
 });
 
 Route::get("test",[QuestionController::class,"howTestPage"])->name("level-test");

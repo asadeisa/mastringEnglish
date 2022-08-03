@@ -56,8 +56,9 @@
 
                 </div>
                 <div class="delete">
-                  <form action="" method="post">
-                    <input type="hidden" name="content_id">
+                  <form action="{{ route("delete-content") }}" method="post">
+                    @csrf
+                    <input type="hidden" name="content_id" value="{{ $content->id }}">
                     <button class="btn btn-danger btn-sm" type="submit">delete</button>
                   </form>
                 </div>
@@ -91,14 +92,13 @@
 
                         else {
 
-                        $list = ["proption","frasal ward","stop word","adverb","adjective","letter","pronunciation","new words"];
+                        $list = ["proption","phrasal verbs","adverb","adjective","pronunciation","new words"];
 
 
                         $option = $content->voc_type;
 
 
                         }
-
                         @endphp
 
                         @csrf
@@ -179,7 +179,7 @@
                       <div class=" py-1 my-1 ">
                         <p>
                           {{$content->text}}
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dicta tempora tempore vel ducimus quis quae, aliquid facilis laudantium veniam error delectus dolores possimus doloremque ipsum nisi nobis esse exercitationem.
+                        
                         </p>
 
                       </div>

@@ -15,7 +15,7 @@ class LevelDecated extends Component
   public $countTest = 0;
   public $nextGroupeQuestion = false;
   public $levelinterface = 'level one';
-
+  
   public function getAllTest($level = "b", $offset = 0)
   {
 
@@ -76,11 +76,13 @@ class LevelDecated extends Component
 
   {
     $this->studentAnswerF();
+ 
+
   }
 
   public function studentAnswerF()
   {
-    if ($this->studentAnswers != null) {
+    if ($this->studentAnswers != null && count($this->studentAnswers) != 0 ) {
 
       $trueAnswer = [];
       foreach ($this->AllTest['questions'] as $keya=> $question) {
@@ -89,22 +91,6 @@ class LevelDecated extends Component
           array_push($trueAnswer, $question['question']);
         }
 
-        // if you wont to retun translat function to work
-        
-        // elseif($question['translat_sent'] == 1)
-        // {
-        //     if($this->getTranslation($this->studentAnswers[$keya] ,"ar","en") == $question['true_ans'])
-        //     {
-        //        array_push($trueAnswer, $this->studentAnswers[$keya]);
-              
-        //     }
-        
-        //     else
-        //     {
-        //     array_push($trueAnswer, $question['true_ans']);
-    
-        //     }
-        // }
         else {
   
           array_push($trueAnswer, $question['true_ans']);
@@ -113,7 +99,7 @@ class LevelDecated extends Component
   
       // dd($trueAnswer);
       $TestMestakeResult = array_diff($trueAnswer, $this->studentAnswers);
-      // dd($Testresult);
+      // dd($TestMestakeResult);
       $idOFError = []; // id of flase answoer
 
       foreach ($TestMestakeResult as $key => $oneresult) {
@@ -137,7 +123,9 @@ class LevelDecated extends Component
         // go home ; 
         $this->insertLevel($this->ConvertLevelTowNumper()); 
         return redirect('home');
+
       } elseif (count($idOFError) == 3) {
+       
         $this->countTest++;
         if ($this->countTest == 2) {
          
@@ -149,9 +137,10 @@ class LevelDecated extends Component
           // fitsh same level of questions ;
           
           $this->AllTest = $this->getAllTest(session('curentlevel'),5);
+          
           $this->studentAnswers = [];
          $this->nextGroupeQuestion == true;
-
+        //  dd("is her",$this->AllTest);
          
         }
       } else {

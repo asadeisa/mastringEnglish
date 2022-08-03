@@ -284,7 +284,7 @@
 		
 													</div>
 		
-													<div class="d-flex justify-content-around w-75">
+													<div class="d-flex justify-content-around w-90">
 														<div class="option">
 															<input type="radio" name="option"
 															x-model="seclectedOption" id="option1{{ $qustion['id'] }}"
@@ -448,7 +448,7 @@
 							</small>
 						</div>
 						<div class="glimpse p-1 font-16">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet assumenda voluptate voluptatibus hic. 
+							{{ $coursContent["teacher"]["glimpse"] }}
 					</div>
 
 					<div class="contact mt-5 d-flex gap-4 mx-5 ">

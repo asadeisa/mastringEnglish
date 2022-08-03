@@ -2,8 +2,6 @@
   <div x-data="{
       section2 : @entangle('nextGroupeQuestion').defer,
       section1 : !this.section2,
-      {{-- nextGroupeQuestion : @js($nextGroupeQuestion), --}}
-
       toSection1 : function(){
           this.section1 = true;
           this.section2 = false;
@@ -87,15 +85,18 @@
                   this.studentAnswer.push(this.answer);
                   this.answer = '';
                   this.submitButton = false;
-                  this.key = -1;
+                  this.key = 0;
                   this.studentAnswer1 = this.studentAnswer;
                   this.studentAnswer = [];
               },
             
-          }">
+          }"
+     
+          >
 
 
           @foreach ($AllTest["questions"] as $key=> $question)
+       {{-- {{   dd($key)}} --}}
           <section x-show="key == {{ $key }}">
             <div class="card-title m-2">
               <h4>
