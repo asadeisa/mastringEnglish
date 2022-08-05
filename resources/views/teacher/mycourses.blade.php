@@ -108,7 +108,7 @@
       <div class="content d-flex space-between py-3">
 
         <div class="card-body d-flex space-around w-50  ">
-          <p class="text-responsev">creacte new cours <span class="larg-icon arrow-rest"><i class="fas fa-long-arrow-alt-right"></i> </span></p>
+          <p class="text-responsev">creacte new course <span class="larg-icon arrow-rest"><i class="fas fa-long-arrow-alt-right"></i> </span></p>
           <div class="bg-dark w-25 position-relative py-4 px-4
        cursor color-w d-flex justify-content-center larg-icon rounded align-items" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
             <i class="fas fa-plus"></i>
@@ -135,7 +135,7 @@
 
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header  d-flex justify-content-center">
-    <h4 class="offcanvas-title text-center" id="offcanvasBottomLabel">New cours</h4>
+    <h4 class="offcanvas-title text-center" id="offcanvasBottomLabel">New course</h4>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body  position-relative d-flex justify-content-center align-times">
@@ -149,16 +149,16 @@
         @enderror
         <div class=" my-4 d-flex ">
           <label for="cours" class="form-label w-25">
-            <p>coures name</p>
+            <p>course name</p>
 
           </label>
           <div class="form w-50 mx-1">
-            <input type="text" name="name" class="form-control" id="cours" placeholder="title off your cours">
+            <input type="text" name="name" class="form-control" id="cours" >
           </div>
         </div>
 
         <div class="level d-flex  mx-1">
-          <p class="w-25">select type of the cours</p>
+          <p class="w-25">select type of the course</p>
           <div class="conent mx-3  d-flex w-75 justify-content-sm-start">
 
             <div class="form-check mr-3">
@@ -178,7 +178,7 @@
 
         <div class="level d-flex space-between mx-1">
           <div class="w-25">
-            <p> select level of the cours:</p>
+            <p> select level of the course:</p>
 
           </div>
           <div class="content  ml-5  w-75 d-flex justify-content-sm-start">
@@ -212,7 +212,7 @@
         </div>
 
         <div class="form-check w-100 d-flex justify-center my-2">
-          <button class="btn btn-dark w-50 d-block ">submit</button>
+          <button class="btn btn-dark w-50 d-block ">Add</button>
         </div>
 
       </form>

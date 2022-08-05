@@ -146,10 +146,7 @@
 												</span>
 										</div>
 										<article class="articals-to-read">
-												{{ $content['text']}} Lorem ipsum dolor sit amet
-												consectetur adipisicing elit. Repellendus doloribus optio consequatur voluptatum,
-												architecto totam laborum vero earum corrupti fugiat, ex vel aliquid atque,
-												distinctio explicabo cum et quaerat velit?
+												{{ $content['text']}} 
 										</article>
 								</div>
 		

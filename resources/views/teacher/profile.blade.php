@@ -38,7 +38,7 @@
                 <div class="my-1">
                   <button type="submit" class="btn btn-info px-4">
 
-                    insert
+                    post
                   </button>
                 </div>
             </form>

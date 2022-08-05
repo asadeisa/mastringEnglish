@@ -92,7 +92,7 @@
 
                         else {
 
-                        $list = ["proption","phrasal verbs","adverb","adjective","pronunciation","new words"];
+                        $list = ["phrasal verbs","adverb","adjective","pronunciation","new words"];
 
 
                         $option = $content->voc_type;
@@ -238,7 +238,7 @@
                           <div class="h5 text-center">
                             
                             @if ($questions->sortabll === 0 && $questions->translat_sent==0)
-                            choses
+                            choice
                             @elseif ($questions->sortabll == true)
                             sort
                             @elseif ($questions->translat_sent !=0)
@@ -484,7 +484,7 @@
                                 <div class="Translation">
                                   <div class=" my-2 input-group w-80">
                                     <label for="description" class="w-25">
-                                      <p>origen sentences</p>
+                                      <p>original sentence</p>
                                     </label>
                                     <input class="w-50 rounded form-control" type="text" name="sentences" id="sentences">
                                   </div>

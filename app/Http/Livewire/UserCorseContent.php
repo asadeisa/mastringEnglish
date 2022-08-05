@@ -76,7 +76,7 @@ class UserCorseContent extends Component
                     })
                     ->with(
                       [
-                        "teacher:id,user_id,rank",
+                        "teacher:id,user_id,rank,glimpse",
                         "teacher.user:id,name,email,img"
                       ]
                       )

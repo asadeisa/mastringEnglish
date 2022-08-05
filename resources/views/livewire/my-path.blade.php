@@ -65,6 +65,7 @@
         </div>
         <button wire:click="getNextLevel()" class="btn btn-primary font-16">next level</button>
       </div>
+      
     </section>
  
     <script>
@@ -86,3 +87,4 @@
       
       </script>
 </div>
+

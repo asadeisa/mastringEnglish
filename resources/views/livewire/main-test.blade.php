@@ -28,7 +28,7 @@
           <div class="h5 text-center">
 
             @if ($questions->sortabll === 0 && $questions->translat_sent==0)
-            choses
+            choice
             @elseif ($questions->sortabll == true)
             sort
             @elseif ($questions->translat_sent !=0)
@@ -186,7 +186,7 @@
                 <div class="Translation d-flex flex-column w-100 align-items-center justify-content-center">
                   <div class=" my-2 input-group w-80">
                     <label for="description" class="w-25">
-                      <p>origen sentences</p>
+                      <p>original sentence</p>
                     </label>
                     <input class="w-50 rounded form-control" type="text" name="sentences" wire:model.defer="question" id="question">
                   </div>
@@ -372,7 +372,7 @@
                       <div class="Translation">
                         <div class=" my-2 input-group w-80">
                           <label for="description" class="w-25">
-                            <p>origen sentences</p>
+                            <p>original sentence</p>
                           </label>
                           <input class="w-50 rounded form-control" type="text" name="sentences" id="sentences">
                         </div>

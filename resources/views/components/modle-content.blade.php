@@ -18,7 +18,7 @@
              $list = ["Present simple", "present perfect", "Past simple","Present continuous","Past perfect" ,"present perfect contnuios","past perfect continuous"];
              else {
                # code...
-               $list = ["proption","frasal ward","stop word","adverb","adjective","letter","pronunciation","new words"];
+               $list =["phrasal verbs","adverb","adjective","pronunciation","new words"];
              } 
             @endphp
          
