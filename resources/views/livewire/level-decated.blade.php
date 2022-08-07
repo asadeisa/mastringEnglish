@@ -17,8 +17,8 @@
   }">
 
 
-    <div class="container d-flex align-items-center justify-content-center hight-100">
-      <div x-show="section1" class="card w-100 p-5 ">
+    <div wire:ignore.self class="container d-flex align-items-center justify-content-center hight-100">
+      <div wire:ignore x-show="section1" class="card w-100 p-5 ">
         <div class="card-head">
           <div class="card-title">
             <h4 class=" d-flex justify-content-center ">
@@ -53,6 +53,7 @@
           </div>
         </div>
       </div>
+
       <div x-cloak x-show="section2" class="all-test-content w-75">
 
         <div class="card prespactive-rotae" x-cloak x-data="{
@@ -63,6 +64,7 @@
               submitButton: false,
               answer : '',
               incresekey: function(){
+                
                 if(this.answer == '')
                 {
                   this.answer = '-1';
@@ -71,9 +73,11 @@
                   this.answer = '';
                   if(this.key < this.maxkey-2)
                   {
-
+                    console.log(this.maxkey , this.key)
                       this.key++;
                   }else{
+                    console.log(this.maxkey , this.key)
+
                       this.key = this.maxkey-1;  
                   this.submitButton = true;
 
@@ -83,15 +87,20 @@
               preckTest : function()
               {   
                   this.studentAnswer.push(this.answer);
-                  this.answer = '';
-                  this.submitButton = false;
-                  this.key = 0;
+                
                   this.studentAnswer1 = this.studentAnswer;
-                  this.studentAnswer = [];
+              },
+              resetvalue : function()
+              {
+                this.answer = '';
+                this.submitButton = false;
+                this.key = 0;
+                this.studentAnswer = [];
+
               },
             
           }"
-     
+          @rest-value.window="resetvalue()"
           >
 
 
@@ -188,7 +197,7 @@
           </section>
           @if($key==0)
           <section 
-         
+          wire:ignore
           class="
             @if ($levelinterface !="expert")
             d-none 
@@ -213,7 +222,7 @@
             </div>
         
           </div>
-
+            
           </section>
           @endif
           @endforeach
@@ -221,6 +230,8 @@
 
         </div>
       </div>
+  
+    
     <script>
       function closeWellDone()
       {
@@ -228,9 +239,9 @@
        let section  =  document.querySelector(".well-done");
        section.style.display = "none";
       }
-
+      
     </script>
-
+    
     </div>
 
   </div>

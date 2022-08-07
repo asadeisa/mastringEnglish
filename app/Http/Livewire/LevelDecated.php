@@ -71,13 +71,16 @@ class LevelDecated extends Component
   {
     return view('livewire.level-decated');
   }
+  public function updating()
+  {
+    $this->dispatchBrowserEvent('rest-value');
 
+  }
   public function updated()
 
   {
     $this->studentAnswerF();
- 
-
+    // dd($this->studentAnswers);
   }
 
   public function studentAnswerF()
@@ -137,7 +140,6 @@ class LevelDecated extends Component
           // fitsh same level of questions ;
           
           $this->AllTest = $this->getAllTest(session('curentlevel'),5);
-          
           $this->studentAnswers = [];
          $this->nextGroupeQuestion == true;
         //  dd("is her",$this->AllTest);
@@ -156,6 +158,7 @@ class LevelDecated extends Component
           return redirect('home');
         } else {
          $this->AllTest =  $this->getAllTest($nextLevel);
+        //  dd( $this->dd );
          
          $this->studentAnswers = [];
          $this->nextGroupeQuestion == true;
@@ -201,13 +204,6 @@ class LevelDecated extends Component
     ]);
   }
 
-  // public function getTranslation($text,$source='en',$target ='ar')
-  // {
-  //   // defult trans from en => ar ; 
-  //   $trans = new GoogleTranslate();
-  //   return   $trans->translate($source, $target, $text);
-
-  // }
 
     public function InteruptTest()
     {
