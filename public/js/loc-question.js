@@ -16,29 +16,19 @@ async function getdata(){
   .then(response => response.json())
   .then(allpargraf =>{
     allpargrafs = allpargraf ; 
-     manageData()
+    filterData(allpargrafs)
     });
 }
 getdata()
 
-function manageData()
-{
-  pargraf =allpargrafs ;
-  FitDataWithStudentLevel  =    filterData(pargraf) ;
-  // the data is ready to use her  : 
-  
-  userUIData = FitDataWithStudentLevel ;
-  console.log(FitDataWithStudentLevel  , "from final func");
-  if (FitDataWithStudentLevel != null) {
-    showToUser(userUIData)
-  }
-}
+
+
 
 function filterData(unvaledData)
 {
   let context  ; 
   let allAcceptscontext = [] ; 
-  
+ 
   for(let i=0 ; i<unvaledData.data[pageOFContext].paragraphs.length ;  i++)
   {
  
@@ -46,22 +36,31 @@ function filterData(unvaledData)
     //  tokens = RiTa.tokens(context); 
 
      let isfitUser  = classifySentenses(context) ;
-  
-     if(isfitUser)
+
+    
+     if(isfitUser == true)
      {
       allAcceptscontext.push(unvaledData.data[pageOFContext].paragraphs[i]);
-      
      }
+
   }
-  if(allAcceptscontext.length == 0 && pageOFContext < unvaledData.data.length -1)
+    // console.log(allAcceptscontext ,"this is pageOFContext@@@");
+  if(allAcceptscontext.length != 0 ){
+    console.log(allAcceptscontext , "allAcceptscontext %%%");
+    // data ready to show to user 
+    userUIData = allAcceptscontext ;
+    if (userUIData != null) {
+      showToUser(userUIData)
+    }
+  }
+ else if(allAcceptscontext.length == 0 && pageOFContext < unvaledData.data.length -1)
   {
-   
+   console.log("if is working ");
     incresPageOfContext(unvaledData)
   }
-  else{
+ 
 
-    return allAcceptscontext ; 
-  }
+  
 
 }
 
@@ -75,48 +74,58 @@ function classifySentenses(allsentanses)
 
    let dif =  clcDifucalty(allsentansesArray[k]);
   
-  //  let dif =  clDifucalty(allsentansesArray[k]); 
+  console.log(dif ,"difficalty for each sentences");
    countOfdif += dif  ; 
   }
   
   totalDifficulty = countOfdif/allsentansesArray.length ; 
-
+ console.log(totalDifficulty , "##totalDifficulty##");
   if(studentLevel == 1)
   {
-    if(totalDifficulty < 0.29)
+    if(totalDifficulty < 0.3)
     {
       return true ; 
+    }
+    else{
+      return false
     }
 
   }
  else if(studentLevel == 2)
   {
-    if(totalDifficulty < 0.4 && totalDifficulty > 0.29)
+    if(totalDifficulty < 0.5 && totalDifficulty > 0.3)
     {
       return true ; 
+    }
+    else{
+      return false
     }
   }
   
   else if(studentLevel == 3)
   {
-    if(totalDifficulty < 0.6 && totalDifficulty >= 0.4)
+    if(totalDifficulty < 0.75 && totalDifficulty >= 0.5)
     {
       return true ; 
+    }
+    else{
+      return false
     }
   }
  else if(studentLevel == 4)
   {
-    if(totalDifficulty >= 0.6)
+    if(totalDifficulty >= 0.75)
     {
       return true ; 
+    }
+    else{
+      return false
     }
   }
   else {
     return false;
   } 
 }
-
-
 
 function clcDifucalty(sentanse)
 {
@@ -130,54 +139,65 @@ function clcDifucalty(sentanse)
   let  AvadifLetterlenght = 0;
   let avarageOFSLPos = 0 ; 
   let MassevValue  =  0 ; 
-
+  let countofMassiveValue =0 ;
+  let numberofRemovedStopwords = 0 ;
   for (let t = 0; t < partOfSpeach.length; t++) {
   //  del with pos things 
 
   //  loopthrow to pos to indecate the dif 
   switch (partOfSpeach[t]) {
-    case "dt":
-      difficultyNewMethod += 0.12 ; 
+    case "dt"  ||"cd" ||"in" ||"pdt" || "to"||"sym":
+      numberofRemovedStopwords ++ ; 
       break;
+    
+        case "wdt":
+        difficultyNewMethod += 0.1; 
 
-      case "fw":
-      difficultyNewMethod += 1.2 ; 
       break;
+        case "prp":
+        difficultyNewMethod += 0.23; 
+
+      break;
+  
+        case "uh":
+          difficultyNewMethod += 0.2; 
+  
+        break;
 
       case "ex":
-      // difficultyNewMethod += 0.25 ; 
-      break;
+        difficultyNewMethod += 0.3 ; 
+        break;
+
+        case "fw":
+        difficultyNewMethod += 0.9 ; 
+        break;
 
       case "prp$":
-      difficultyNewMethod += 0.66 ; 
+      difficultyNewMethod += 0.23 ; 
       break;
 
       case "wp$":
-      difficultyNewMethod += 0.46 ; 
+      difficultyNewMethod += 0.1 ; 
       break;
 
-      case "cd":
-      difficultyNewMethod += 0.03 ; 
-      break;
 
-      case "in":
-      difficultyNewMethod += 0.06 ; 
-
-      break;
 
       case "jj":
-      difficultyNewMethod += 0.66 ; 
+      difficultyNewMethod += 0.65 ; 
+      // MassevValue +=0.3 ; 
 
       break;
 
       case "jjr":
-      difficultyNewMethod += 3 ; 
-      
+      difficultyNewMethod += 0.9 ; 
+      MassevValue +=0.6 ; 
+      countofMassiveValue ++;
       break;
 
       case "jjs":
-      difficultyNewMethod += 3.5 ; 
+      difficultyNewMethod += 1 ; 
       MassevValue ++ ; 
+      countofMassiveValue ++;
 
       break;
 
@@ -187,117 +207,86 @@ function clcDifucalty(sentanse)
       break;
 
       case "nns":
-      difficultyNewMethod += 0.6 ; 
+      difficultyNewMethod += 0.7 ; 
+      MassevValue +=0.4 ; 
 
       break;
 
       case "nnp":
-      difficultyNewMethod += 1 ; 
+      difficultyNewMethod += 0.78 ; 
+      MassevValue +=0.56 ; 
+      countofMassiveValue ++;
 
       break;
 
       case "nnps":
-      difficultyNewMethod +=1.6 ; 
+      difficultyNewMethod +=1 ; 
+      MassevValue +=1; 
+      countofMassiveValue ++;
 
       break;
-
-      case "pdt":
-      difficultyNewMethod += 0.2 ; 
-
-      break;
-
       case "pos":
-        difficultyNewMethod += 0.63 ; 
+        difficultyNewMethod += 0.1 ; 
         
       break;
-
-      case "prp":
-        difficultyNewMethod += 0.1 ; 
+      case "rp":
+        difficultyNewMethod += 0.68; 
 
       break;
-
       case "rb":
-        difficultyNewMethod += 0.68; 
+        difficultyNewMethod += 0.1; 
 
       break;
 
       case "rbr":
-        difficultyNewMethod += 0.83; 
+        difficultyNewMethod += 0.5; 
+        MassevValue +=0.45; 
+        countofMassiveValue ++;
 
       break;
 
       case "rbs":
-        difficultyNewMethod += 2.2; 
+        difficultyNewMethod += 1; 
       
+        MassevValue +=1; 
+        countofMassiveValue ++;
 
       break;
-
-      case "sym":
-        // difficultyNewMethod += 0.3; 
-
-      break;
-
-      case "to":
-        difficultyNewMethod += 0.05; 
-
-      break;
-
-      case "uh":
-        difficultyNewMethod += 0.3; 
-
-      break;
-
       case "vb":
-        difficultyNewMethod += 0.4; 
+        difficultyNewMethod += 0.23; 
 
       break;
 
       case "vbd":
-        difficultyNewMethod += .9; 
+        difficultyNewMethod += 0.3; 
 
       break;
 
       case "vbg":
-        difficultyNewMethod += 0.9; 
+        difficultyNewMethod += 0.2; 
 
       break;
 
-      case "vbn":
-        difficultyNewMethod += 4.6; 
-      MassevValue += 0.5 ; 
+      case "vbn"||"vbp"||"vbz":
+        difficultyNewMethod += 1; 
+        MassevValue +=0.8; 
+
+        countofMassiveValue ++;
 
       break;
-
-      case "vbp":
-        difficultyNewMethod += 4; 
-      MassevValue ++ ; 
-        
-      break;
-
-      case "vbz":
-        difficultyNewMethod += 3.7; 
-        MassevValue += 0.5 ; 
-
-      break;
-
-      case "wdt":
-        difficultyNewMethod += 0.22; 
-
-      break;
-
       case "wp":
-        difficultyNewMethod += 0.35; 
+        difficultyNewMethod += 0.1; 
 
       break;
 
       case "cc":
-        difficultyNewMethod += 0.39; 
+        difficultyNewMethod += 0.1; 
 
       break;
 
     default:
-      difficultyNewMethod += Math.random().toFixed(2); 
-      MassevValue -= 0.04 ; 
+      // difficultyNewMethod += 0.1; 
+      numberofRemovedStopwords++
 
       break;
   }
@@ -331,117 +320,127 @@ function clcDifucalty(sentanse)
   }
  
     let letterlenght =  onsiglWord.length
-    if(letterlenght > 8){
+    if(letterlenght > 5){
       difLetterlenght += 1 ; 
-    }else{
-      difLetterlenght += letterlenght/8; 
-
     }
   
   
     }
    
-    if(stressCountForallSent >=snetokens.lengt*0.8 )
+    if(stressCountForallSent >=snetokens.lengt*0.46 )
     {
-      Avadifstresses = 0.88 ; 
+      Avadifstresses = 1 ; 
     } 
-    else if(stressCountForallSent >= snetokens.length*0.6 )
+    else if(stressCountForallSent >= snetokens.length*0.43 )
     {
       Avadifstresses = 0.6 ; 
 
     }
-    else if(stressCountForallSent >= snetokens.length*0.49 )
+    else if(stressCountForallSent >= snetokens.length*0.37 )
     {
-      Avadifstresses = 0.45 ; 
+      Avadifstresses = 0.5 ; 
+
+    }
+    else if(stressCountForallSent >= snetokens.length*0.3 )
+    {
+      Avadifstresses = 0.4 ; 
+
+    }
+    else if(stressCountForallSent >= snetokens.length*0.27 )
+    {
+      Avadifstresses = 0.3 ; 
 
     }
     else{
-      Avadifstresses = 0.22 ; 
+      Avadifstresses = 0.1; 
     }
       // avarag of every var 
       // Avadifstresses = difstresses/snetokens.length;
-      AvadifLetterlenght = difLetterlenght/snetokens.length;
-      AvadifficultyNewMethod = parseFloat(difficultyNewMethod)/partOfSpeach.length;
+      if( difLetterlenght/snetokens.length > 0.6)
+      {
+        AvadifLetterlenght = 1;
+      }
+      else if(difLetterlenght/snetokens.length > 0.5)
+      {
+        AvadifLetterlenght = 0.7;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0.45)
+      {
+        AvadifLetterlenght = 0.6;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0.4)
+      {
+        AvadifLetterlenght = 0.5;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0.35)
+      {
+        AvadifLetterlenght = 0.4;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0.3)
+      {
+        AvadifLetterlenght = 0.3;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0.2)
+      {
+        AvadifLetterlenght = 0.2;
+
+      }
+      else if(difLetterlenght/snetokens.length > 0)
+      {
+        AvadifLetterlenght = 0.1;
+
+      }
+      // AvadifLetterlenght = difLetterlenght/snetokens.length;
+      AvadifficultyNewMethod = parseFloat(difficultyNewMethod)/(partOfSpeach.length - numberofRemovedStopwords);
     
     
         //  add new parametre to dif  is sentanses words number 
   let difOfsentanseLength = 0.2  ; 
+   
+
   let sentanseLength  = snetokens.length;
-  if(MassevValue > (sentanseLength /2 + sentanseLength/5) ){
+  if(countofMassiveValue/sentanseLength  >0.5) {
     difOfsentanseLength = 0.9;
   } 
-  else if(MassevValue  > (sentanseLength /3 + sentanseLength/5) )
+  else if(countofMassiveValue/sentanseLength   > 0.3 )
   {
-    difOfsentanseLength = 0.75 ;
-
+    difOfsentanseLength = (MassevValue + 0.65)/(countofMassiveValue +1) ;
+    
   }
-  else if(MassevValue  > sentanseLength /3 )
+  else if(countofMassiveValue/sentanseLength   >0.1 )
   {
-    difOfsentanseLength = 0.55 ;
-
+    
+    difOfsentanseLength = (MassevValue + 0.2 )/(countofMassiveValue +1) ;
+    
   }
-  else if(MassevValue ==  0)
+  else if(countofMassiveValue/sentanseLength  <=  0.1)
   {
     difOfsentanseLength = 0.1 ;
-
   }
-  else {
-    difOfsentanseLength = 0.4 ;
-
-  }
+  // console.log("countofMassiveValue",countofMassiveValue);
   // console.log("MassevValueMassevValueMassevValue",MassevValue);
-  // console.log(AvadifLetterlenght , "AvadifLetterlenght");
-  // console.log(Avadifstresses , "Avadifstresses");
+  // console.log(AvadifLetterlenght , "AvadifLetterlenght $$44");
+  // console.log(Avadifstresses , "Avadifstresses ####3");
   // console.log(difOfsentanseLength , "difOfsentanseLength");
-  // console.log(AvadifficultyNewMethod ,"AvadifficultyNewMethod");
-  avarageOFSLPos = (Avadifstresses + 2*AvadifficultyNewMethod + AvadifLetterlenght + difOfsentanseLength)/5;
+  // console.log(AvadifficultyNewMethod ,"AvadifficultyNewMethod &&&&");
+  avarageOFSLPos = (2*Avadifstresses + AvadifficultyNewMethod + 2*AvadifLetterlenght + difOfsentanseLength)/6;
  
     return  parseFloat(avarageOFSLPos.toFixed(2)) ; 
 }
 
-function  incresPageOfContext(unvaledData)
+function  incresPageOfContext(allpargrafs)
 {
   pageOFContext++  ; 
 localStorage.setItem("pageOFContext",pageOFContext)
 
-  filterData(unvaledData)
+  filterData(allpargrafs)
 }
 
-
-// // pos sortcat
-// const posSortCat = {
-//   "dt"  :	'Determiner',
-//    "cd" :  "Cardinal number" ,
-//   "fw"  :'Foreign word',
-//   "in"  :	'Preposition or subordinating conjunction',
-//   "jj"  :	'Adjective',
-//   "jjr" :	'Adjective, comparative',
-//   "jjs" :	'Adjective, superlative',
-//   "nn"  :"	Noun, singular or mass",
-//   "nns" :	"Noun, plural",
-//   "nnp" :	'Proper noun, singular',
-//   "nnps"  :	'Proper noun, plural',
-//   "pdt" :	"Predeterminer",
-//   "pos" :	"Possessive ending",
-//   "prp" :	"Personal pronoun",
-//   "rb"  :	"Adverb",
-//   "rbr" :"	Adverb, comparative",
-//   "rbs" :	"Adverb, superlative",
-//   "rp"  :	"Particle",
-//   "sym" :	"Symbol",
-//   "to"  :	"to",
-//   "uh"  :	"Interjection",
-//   "vb"  :"Verb, base form",
-//   "vbd" :	"Verb, past tense",
-//   "vbg" :"Verb, gerund or present participle",
-//   "vbn" :"Verb, past participle",
-//   "vbp" :	"Verb, non-3rd person singular present",
-//   "vbz" :	"Verb, 3rd person singular present",
-//   "wdt" :'Wh-determiner',
-//   "wp"  :	"Wh-pronoun",
-//   "wrb" :"	Wh-adverb",
-//   "cc"  :	"Coordinating conjunction",
-// }
 
 
 // display data to user : 
@@ -462,44 +461,48 @@ function showToUser()
   } 
 
 // console.log("from hwo func" , textPargra ,questions);
-if(indexofText >=textPargra.length )
-{
-  indexofText = 0;
-  ansofq = [] ;
-  textPargra = [];
-  questions = [] ;
-  pageOFContext++
-localStorage.setItem("pageOFContext",pageOFContext)
-textUI.innerText = "";
-questionUI.innerHTML = " ";
+let textUI = document.getElementById("injext-text");
+let questionUI = document.getElementById("inject-questions") ;
+  if(indexofText >=textPargra.length )
+  {
+    indexofText = 0;
+    ansofq = [] ;
+    textPargra = [];
+    questions = [] ;
+    pageOFContext++
+  localStorage.setItem("pageOFContext",pageOFContext)
+  textUI.innerText = "";
+  questionUI.innerHTML = " ";
 
-  manageData() ;
+  filterData(allpargrafs) ;
 
-}
-  let textUI = document.getElementById("injext-text");
-  let questionUI = document.getElementById("inject-questions") ;
-  // show the output to the user : 
-  // clean old data 
-  questionUI.innerHTML = "";
-  ansofq = [] ; 
-  textUI.innerText =  textPargra[indexofText] ;
-  // hidden the  loader and show the main div 
-document.querySelector('.loader-tump').classList.add("d-none");
-document.getElementById("water-fordata").classList.remove("hidden-teperry")
+  }
+  else{
 
-  // show the qeustion : 
-  for (let j = 0; j < questions[indexofText].length && j <4; j++) {
+    // show the output to the user : 
+    // clean old data 
+    questionUI.innerHTML = "";
+    ansofq = [] ; 
+    console.log(textPargra ,"from array @@@@@");
+    textUI.innerText =  textPargra[indexofText] ;
+    // hidden the  loader and show the main div 
+  document.querySelector('.loader-tump').classList.add("d-none");
+  document.getElementById("water-fordata").classList.remove("hidden-teperry")
 
-    ansofq.push(questions[indexofText][j].answers[0].text)
-    questionUI.innerHTML += ` 
-      <div class="one-question my-2">
-        <div class="h6 ">${questions[indexofText][j].question} </div>
-        <form >
-           <input type="text" class="form-group form-control w-75" >
+    // show the qeustion : 
+    for (let j = 0; j < questions[indexofText].length && j <4; j++) {
 
-         </form>
-        </div>`
-    
+      ansofq.push(questions[indexofText][j].answers[0].text)
+      questionUI.innerHTML += ` 
+        <div class="one-question my-2">
+          <div class="h6 ">${questions[indexofText][j].question} </div>
+          <form >
+            <input type="text" class="form-group form-control w-75" >
+
+          </form>
+          </div>`
+      
+    }
   }
 }
 // get next slide or next page : 
@@ -510,6 +513,7 @@ function getNextText()
   indexofText ++ ;
   showToUser()
 }
+
 document.getElementById("conform-question").addEventListener("click",conformans)
 
 function conformans()
@@ -529,7 +533,7 @@ function conformans()
   console.log(ansofq);
   let  Ansdifference = ansofq.filter(x => !userAns.includes(x));
 console.log(Ansdifference,"shoudled show all input");
-  // showToUser()
+ 
   // indexofText ++ ;
   // ansofq
  let  messageToUser  = ``
